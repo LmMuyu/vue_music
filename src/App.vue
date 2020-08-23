@@ -1,32 +1,38 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <keep-alive>
+      <router-view> </router-view>
+    </keep-alive>
   </div>
 </template>
 
+<script>
+export default {
+  name: "app",
+  components: {},
+};
+</script>
+
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 14px;
+  -webkit-app-region: no-drag;
 }
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+@font-face {
+  font-family: "iconfont"; /* project id 1810160 */
+  src: url("https://at.alicdn.com/t/font_1810160_qt5ucv0rom.eot");
+  src: url("https://at.alicdn.com/t/font_1810160_qt5ucv0rom.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://at.alicdn.com/t/font_1810160_qt5ucv0rom.woff2") format("woff2"),
+    url("https://at.alicdn.com/t/font_1810160_qt5ucv0rom.woff") format("woff"),
+    url("https://at.alicdn.com/t/font_1810160_qt5ucv0rom.ttf")
+      format("truetype"),
+    url("https://at.alicdn.com/t/font_1810160_qt5ucv0rom.svg#iconfont")
+      format("svg");
 }
 </style>
