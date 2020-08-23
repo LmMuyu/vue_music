@@ -3,16 +3,24 @@
     <div class="left">
       <div class="appInfo">
         <el-avatar
-          :size="36"
+          :size="32"
           src="https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2423808984,2169767440&fm=26&gp=0.jpg"
         ></el-avatar>
         <span>网易云音乐</span>
+      </div>
+      <div class="search">
+        <el-input
+          :value="content"
+          @input="search"
+          size="mini"
+          :placeholder="searchText"
+        ></el-input>
       </div>
     </div>
     <div class="right">
       <div class="avatar">
         <el-avatar
-          :size="36"
+          :size="32"
           src="https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1671247724,3484152546&fm=26&gp=0.jpg"
         ></el-avatar>
         <span class="login"> <router-link to="/">未登录</router-link></span>
@@ -28,7 +36,20 @@
 
 <script>
 export default {
-  methods: {},
+  props: {
+    content: String,
+  },
+  data() {
+    return {
+      searchText: "搜索",
+    };
+  },
+  methods: {
+    search(value) {
+      this.$emit("update:content", value);
+    },
+  },
+
   mounted() {},
 };
 </script>
@@ -38,8 +59,8 @@ export default {
   width: 100%;
   height: 40px;
   -webkit-app-region: drag;
-  background: rgb(32, 32, 35);
-  padding: 4px 0;
+  background: #202023;
+  padding: 3px 0;
 }
 .header {
   display: flex;
@@ -52,7 +73,7 @@ export default {
   align-items: center;
   & > span {
     color: #ffffff;
-    margin-left: 24px;
+    margin-left: 10px;
     font-weight: 300;
   }
 }
@@ -61,9 +82,8 @@ export default {
   align-items: center;
   justify-content: flex-end;
   .triangle {
-    & :hover::before {
+    &::before:hover {
       border-color: #fff transparent transparent transparent;
-      transition: all 3s;
     }
     &::before {
       content: "";
@@ -116,6 +136,22 @@ export default {
     padding: 0 5px;
     cursor: pointer;
     -webkit-app-region: no-drag;
+  }
+}
+.left {
+  display: flex;
+  align-items: center;
+  & .search {
+    -webkit-app-region: no-drag;
+  }
+  & .search > input {
+    border-radius: 8px;
+  }
+  & div:nth-child(1) {
+    flex: 2;
+  }
+  & div:nth-child(2) {
+    flex: 1;
   }
 }
 </style>
