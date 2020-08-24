@@ -13,6 +13,10 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 var isDevelopment = process.env.NODE_ENV !== "production";
+
+var _require = require("./electron/globalShortcut"),
+    shortcut = _require.shortcut;
+
 var win;
 
 _electron.protocol.registerSchemesAsPrivileged([{
@@ -53,6 +57,16 @@ function createWindow() {
   });
 }
 
+_electron.app.whenReady().then(function () {
+  //全局快捷键
+  shortcut(win);
+  (0, _electronDevtoolsInstaller["default"])(_electronDevtoolsInstaller.VUEJS_DEVTOOLS).then(function (name) {
+    return console.log("Added Extension:  ".concat(name));
+  })["catch"](function (err) {
+    return console.log("An error occurred: ", err);
+  });
+});
+
 _electron.app.on("window-all-closed", function () {
   if (process.platform !== "darwin") {
     _electron.app.quit();
@@ -72,34 +86,15 @@ _electron.app.on("ready", function _callee() {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          if (!(isDevelopment && !process.env.IS_TEST)) {
-            _context.next = 9;
-            break;
-          }
-
-          _context.prev = 1;
-          _context.next = 4;
-          return regeneratorRuntime.awrap((0, _electronDevtoolsInstaller["default"])(_electronDevtoolsInstaller.VUEJS_DEVTOOLS));
-
-        case 4:
-          _context.next = 9;
-          break;
-
-        case 6:
-          _context.prev = 6;
-          _context.t0 = _context["catch"](1);
-          console.error("Vue Devtools failed to install:", _context.t0.toString());
-
-        case 9:
-          _context.next = 11;
+          _context.next = 2;
           return regeneratorRuntime.awrap(createWindow());
 
-        case 11:
+        case 2:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[1, 6]]);
+  });
 });
 
 if (isDevelopment) {
@@ -121,6 +116,5 @@ _electron.ipcMain.on("miniMize", function () {
 });
 
 _electron.ipcMain.on("close", function () {
-  console.log(123);
   win.close();
 });

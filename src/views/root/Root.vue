@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="root">
     <RootHeader :content.sync="searchContent" />
     <RootLeftFeatures />
   </div>
@@ -23,4 +23,7 @@ export default {
 </script>
 
 <style scoped>
+.root {
+  overflow: hidden;
+}
 </style>

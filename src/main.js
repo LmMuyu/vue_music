@@ -6,13 +6,18 @@ import store from "./store";
 import "./plugins/element.js";
 import "normalize.css";
 
-let ipcRenderer 
+let ipcRenderer;
 if (window.require) {
-  ipcRenderer = window.require("electron").ipcRenderer
+  ipcRenderer = window.require("electron").ipcRenderer;
 }
 
 Vue.config.productionTip = false;
-Vue.prototype.$ipcRenderer  = ipcRenderer
+Vue.prototype.$ipcRenderer = ipcRenderer;
+
+//禁止用户选择文字
+document.addEventListener("selectstart", e => {
+  e.preventDefault();
+});
 
 new Vue({
   router,

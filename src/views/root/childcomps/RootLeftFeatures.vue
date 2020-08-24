@@ -49,6 +49,8 @@ $textcolor: #dfe6e9;
 .left {
   float: left;
   min-width: 200px;
+  position: relative;
+  height: 100%;
 }
 
 .left_title {
@@ -72,6 +74,18 @@ $textcolor: #dfe6e9;
 .leftmenu {
   max-width: 300px;
 
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+    border-width: 0.1px;
+    border-style: solid;
+    border-color: #dfe6e9;
+  }
+
   & > div {
     width: 100%;
     background: #202023;
@@ -79,7 +93,7 @@ $textcolor: #dfe6e9;
     align-items: center;
     padding: 5px 0;
     cursor: pointer;
-    box-sizing: border-box;
+    box-sizing: content-box;
 
     & > div {
       color: $textcolor;
@@ -96,21 +110,19 @@ $textcolor: #dfe6e9;
 }
 .active {
   background: #2e3030 !important;
+  position: relative;
+  overflow: hidden;
 
   &::before {
     content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 0;
-    height: 0;
-    border-width: 5px;
+    height: 100%;
+    border-width: 1.5px;
     border-style: solid;
-    border-color: aqua;
-  }
-
-  &::after {
-    content: "";
-    width: 10px;
-    height: 10px;
-    background: red;
+    border-color: #ff7675;
   }
 }
 </style>

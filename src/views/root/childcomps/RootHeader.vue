@@ -81,6 +81,9 @@ export default {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  & > img {
+    cursor: pointer;
+  }
   .triangle {
     &::before:hover {
       border-color: #fff transparent transparent transparent;

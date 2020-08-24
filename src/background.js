@@ -3,6 +3,8 @@ import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS_DEVTOOLS } from "electron-devtools-installer";
 const isDevelopment = process.env.NODE_ENV !== "production";
 
+const { shortcut } = require("./electron/globalShortcut");
+
 let win;
 
 protocol.registerSchemesAsPrivileged([
@@ -22,6 +24,7 @@ function createWindow() {
     resizable: false
   });
 
+
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     win.loadURL(process.env.WEBPACK_DEV_SERVER_URL);
     if (!process.env.IS_TEST) win.webContents.openDevTools();
@@ -40,6 +43,15 @@ function createWindow() {
   });
 }
 
+app.whenReady().then(() => {
+  //全局快捷键
+  shortcut(win);
+
+  installExtension(VUEJS_DEVTOOLS)
+    .then(name => console.log(`Added Extension:  ${name}`))
+    .catch(err => console.log("An error occurred: ", err));
+});
+
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
     app.quit();
@@ -55,13 +67,6 @@ app.on("activate", () => {
 
 //应用启动
 app.on("ready", async () => {
-  if (isDevelopment && !process.env.IS_TEST) {
-    try {
-      await installExtension(VUEJS_DEVTOOLS);
-    } catch (e) {
-      console.error("Vue Devtools failed to install:", e.toString());
-    }
-  }
   await createWindow();
 });
 
@@ -84,6 +89,5 @@ ipcMain.on("miniMize", () => {
 });
 
 ipcMain.on("close", () => {
-  console.log(123);
   win.close();
 });
