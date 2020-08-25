@@ -79,11 +79,9 @@ $textcolor: #dfe6e9;
     position: absolute;
     top: 0;
     right: 0;
-    width: 0;
+    width: 10px;
     height: 100%;
-    border-width: 0.1px;
-    border-style: solid;
-    border-color: #dfe6e9;
+    box-shadow: 1px 0 0 0 #424242;
   }
 
   & > div {

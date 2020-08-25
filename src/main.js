@@ -5,6 +5,7 @@ import router from "./router";
 import store from "./store";
 import "./plugins/element.js";
 import "normalize.css";
+import "@/plugins/swiper";
 
 let ipcRenderer;
 if (window.require) {

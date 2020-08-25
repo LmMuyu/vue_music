@@ -14,6 +14,8 @@ require("./plugins/element.js");
 
 require("normalize.css");
 
+require("@/plugins/swiper");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var ipcRenderer;
