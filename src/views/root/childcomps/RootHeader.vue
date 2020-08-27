@@ -14,6 +14,7 @@
           @input="search"
           size="mini"
           :placeholder="searchText"
+          suffix-icon="el-icon-search"
         ></el-input>
       </div>
     </div>
@@ -50,7 +51,11 @@ export default {
     },
   },
 
-  mounted() {},
+  mounted() {
+    let input = document.querySelector(".el-input__inner");
+    input.style.backgroundColor = "#2d3436";
+    input.style.height = "20px";
+  },
 };
 </script>
 
@@ -148,7 +153,8 @@ export default {
     -webkit-app-region: no-drag;
   }
   & .search > input {
-    border-radius: 8px;
+    border-radius: 13px;
+    background-color: #202023;
   }
   & div:nth-child(1) {
     flex: 2;
@@ -156,5 +162,8 @@ export default {
   & div:nth-child(2) {
     flex: 1;
   }
+}
+.input__inner {
+  background: #202023 !important;
 }
 </style>

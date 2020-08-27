@@ -25,4 +25,5 @@ function request(config) {
     // Do something with response error
     return Promise.reject(error);
   });
+  return Axios(config);
 }

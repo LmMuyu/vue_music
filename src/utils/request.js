@@ -28,4 +28,6 @@ function request(config) {
       return Promise.reject(error);
     }
   );
+  
+  return Axios(config);
 }
