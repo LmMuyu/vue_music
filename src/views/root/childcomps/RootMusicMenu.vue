@@ -1,18 +1,17 @@
 <template>
   <div>
     <Menu />
-    <RootSwiper />
+    <Swiper />
   </div>
 </template>
 
 <script>
-import RootSwiper from "../components/RootSwiper.vue";
-
 import Menu from "@/components/content/Menu.vue";
+import Swiper from "@/components/content/Swiper.vue";
 
 export default {
   components: {
-    RootSwiper,
+    Swiper,
     Menu,
   },
 };

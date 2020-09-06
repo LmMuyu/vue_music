@@ -59,7 +59,7 @@ $textcolor: #969696;
 .menu {
   padding: 5px 0 0 0;
   @include flex;
-  box-shadow: 0 1px 0px #212324;
+  box-shadow: 0 1px 0px #3d4042;
 }
 .menu_size {
   width: 80%;
