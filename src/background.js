@@ -20,10 +20,8 @@ function createWindow() {
       nodeIntegration: true
     },
     show: false,
-    backgroundColor: "#2e2c29",
-    resizable: false
+    backgroundColor: "#1a1e1f"
   });
-
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     win.loadURL(process.env.WEBPACK_DEV_SERVER_URL);

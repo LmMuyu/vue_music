@@ -45,16 +45,19 @@ export default {
       searchText: "搜索",
     };
   },
-  methods: {
-    search(value) {
-      this.$emit("update:content", value);
-    },
-  },
-
   mounted() {
     let input = document.querySelector(".el-input__inner");
     input.style.backgroundColor = "#2d3436";
     input.style.height = "20px";
+
+    let fn = (name, age) => {
+      console.log(name + ":" + age);
+    };
+  },
+  methods: {
+    search(value) {
+      this.$emit("update:content", value);
+    },
   },
 };
 </script>

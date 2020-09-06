@@ -1,13 +1,6 @@
 <template>
   <div class="left">
-    <div
-      style="
-        background-color: #202023;
-        color: #636e72;
-        font-size: 16;
-        padding: 0 0 0 8px;
-      "
-    >
+    <div class="menu_hover">
       推荐
     </div>
     <div class="leftmenu">
@@ -46,6 +39,13 @@ export default {
 
 <style lang="scss" scoped>
 $textcolor: #dfe6e9;
+
+.menu_hover {
+  background-color: #202023;
+  color: #636e72;
+  font-size: 16;
+  padding: 0 0 0 8px;
+}
 .left {
   float: left;
   min-width: 200px;

@@ -32,10 +32,9 @@ export default {
 
 <style scoped>
 .root {
-  overflow: visible;
 }
 .content {
-  float: left;
-  padding: 10px 12px;
+  padding: 0 12px;
+  overflow: hidden;
 }
 </style>
