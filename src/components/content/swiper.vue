@@ -42,7 +42,7 @@ export default {
           case next:
             return "next";
           default:
-            return "";
+            return "zindex";
         }
       };
     },
@@ -52,19 +52,19 @@ export default {
       setInterval(() => {
         this.currentIndex =
           this.currentIndex != 5 ? (this.currentIndex += 1) : 0;
-      }, 3000);
+      }, 5000);
     },
   },
   mounted() {
-    this.runSwiper();
+    // this.runSwiper();
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .swiper_content {
-  perspective: 800px;
   margin-top: 10px;
+  width: 100%;
 }
 .swiper_lsit {
   width: 100%;
@@ -73,23 +73,32 @@ export default {
   display: flex;
   justify-content: center;
   transform-style: preserve-3d;
+  overflow: hidden;
 }
 .swiper_img {
   position: absolute;
+  transform: translate3d(50%, 0, -300px) scale(0.8);
+  transition: all 5s ease-in-out;
+  border-radius: 8px;
+  overflow: hidden;
+
   & > img {
     height: 200px;
-    width: 350px;
+    width: 200px;
     object-fit: cover;
-    transition: all 0.5s;
   }
 }
 .active {
-  transform: translateZ(50px);
+  transform: translate3d(0, 0, 0) scale(1);
+  z-index: 10;
 }
 .prev {
-  transform: translate3d(-85%, 0, 0);
+  transform: translate3d(-120%, 0, -200px) scale(0.8);
 }
 .next {
-  transform: translate3d(85%, 0, 0);
+  transform: translate3d(120%, 0, -200px) scale(0.8);
+}
+.zindex {
+  z-index: -99;
 }
 </style>
