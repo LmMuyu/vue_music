@@ -32,6 +32,7 @@ export default {
 
 <style scoped>
 .root {
+  height: 100%;
 }
 .content {
   padding: 0 12px;

@@ -1,19 +1,19 @@
 <template>
   <div class="left">
-    <div class="menu_hover">
-      推荐
-    </div>
-    <div class="leftmenu">
-      <div
+    <div class="menu_hover">推荐</div>
+    <ul class="leftmenu">
+      <li
         :class="{ active: active === index }"
         @click="active = index"
         v-for="(features, index) in features"
         :key="features.id"
       >
         <i class="iconfont icon">&#xe601;</i>
-        <div>{{ features.name }}</div>
-      </div>
-    </div>
+        <span :class="{ active_text: active === index }">{{
+          features.name
+        }}</span>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -40,11 +40,15 @@ export default {
 <style lang="scss" scoped>
 $textcolor: #dfe6e9;
 
+.text_transition {
+  transition: all 0.2s ease-in-out;
+}
+
 .menu_hover {
   background-color: #202023;
   color: #636e72;
   font-size: 16;
-  padding: 0 0 0 8px;
+  padding: 8px;
 }
 .left {
   float: left;
@@ -53,59 +57,60 @@ $textcolor: #dfe6e9;
   height: 100%;
 }
 
-.left_title {
-  display: flex;
-  align-items: center;
-  & i {
-    padding: 0 5px 0 0;
-  }
-  & .font {
-    font-size: 20px;
-  }
-
-  & .titleBefore::before {
-    content: "";
-    position: relative;
-    width: 0;
-    height: 0;
-    border: 5px solid red;
-  }
-}
 .leftmenu {
   max-width: 300px;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
 
   &::after {
     content: "";
     position: absolute;
     top: 0;
     right: 0;
-    width: 10px;
+    width: 0;
     height: 100%;
-    box-shadow: 1px 0 0 0 #424242;
+    border-right: 1px solid #3a3737;
   }
 
-  & > div {
+  & > li {
     width: 100%;
     background: #202023;
     display: flex;
     align-items: center;
     padding: 5px 0;
-    cursor: pointer;
     box-sizing: content-box;
+    cursor: pointer;
 
-    & > div {
+    &:hover span,
+    i {
       color: $textcolor;
+    }
+
+    & > span {
+      @extend .text_transition;
+      color: #95a5a6;
       font-size: 12px;
     }
 
     & .icon {
+      @extend .text_transition;
       font-size: 18px;
-      color: $textcolor;
+      color: #95a5a6;
       padding: 0 5px;
       margin-left: 10px;
     }
   }
 }
+
+li {
+  list-style: none;
+}
+
+.active_text {
+  color: #ecf0f1 !important;
+}
+
 .active {
   background: #2e3030 !important;
   position: relative;

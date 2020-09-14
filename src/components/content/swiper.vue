@@ -49,14 +49,18 @@ export default {
   },
   methods: {
     runSwiper() {
-      setInterval(() => {
-        this.currentIndex =
-          this.currentIndex != 5 ? (this.currentIndex += 1) : 0;
-      }, 5000);
+      requestAnimationFrame(
+        () => {
+          this.currentIndex =
+            this.currentIndex != 5 ? (this.currentIndex += 1) : 0;
+        },
+        2000,
+        false
+      );
     },
   },
   mounted() {
-    // this.runSwiper();
+    this.runSwiper();
   },
 };
 </script>
@@ -78,7 +82,7 @@ export default {
 .swiper_img {
   position: absolute;
   transform: translate3d(50%, 0, -300px) scale(0.8);
-  transition: all 5s ease-in-out;
+  transition: all 2s ease-in-out;
   border-radius: 8px;
   overflow: hidden;
 
