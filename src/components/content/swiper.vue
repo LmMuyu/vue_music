@@ -31,8 +31,10 @@ export default {
   computed: {
     activeClass() {
       return function (i) {
-        let prev = this.currentIndex === 0 ? 5 : this.currentIndex - 1;
-        let next = this.currentIndex === 5 ? 0 : this.currentIndex + 1;
+        let prev =
+          this.currentIndex === 0 ? this.swiperimg - 1 : this.currentIndex - 1;
+        let next =
+          this.currentIndex === this.swiperimg - 1 ? 0 : this.currentIndex + 1;
 
         switch (i) {
           case this.currentIndex:
@@ -42,21 +44,19 @@ export default {
           case next:
             return "next";
           default:
-            return "zindex";
+            return "";
         }
       };
     },
   },
   methods: {
     runSwiper() {
-      requestAnimationFrame(
-        () => {
-          this.currentIndex =
-            this.currentIndex != 5 ? (this.currentIndex += 1) : 0;
-        },
-        2000,
-        false
-      );
+      setInterval(() => {
+        this.currentIndex =
+          this.currentIndex < this.swiperimg.length - 1
+            ? (this.currentIndex += 1)
+            : 0;
+      }, 6000);
     },
   },
   mounted() {
@@ -81,28 +81,24 @@ export default {
 }
 .swiper_img {
   position: absolute;
-  transform: translate3d(50%, 0, -300px) scale(0.8);
-  transition: all 2s ease-in-out;
+  transform: translate3d(0, 0, -300px) scale(0.8);
+  transition: all 5s linear;
   border-radius: 8px;
   overflow: hidden;
 
   & > img {
     height: 200px;
-    width: 200px;
+    width: 400px;
     object-fit: cover;
   }
 }
 .active {
-  transform: translate3d(0, 0, 0) scale(1);
-  z-index: 10;
+  transform: translate3d(0, 0, 300px) scale(1);
 }
 .prev {
-  transform: translate3d(-120%, 0, -200px) scale(0.8);
+  transform: translate3d(-80%, 0, -200px) scale(0.8);
 }
 .next {
-  transform: translate3d(120%, 0, -200px) scale(0.8);
-}
-.zindex {
-  z-index: -99;
+  transform: translate3d(80%, 0, -100px) scale(0.8);
 }
 </style>

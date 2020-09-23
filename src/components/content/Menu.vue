@@ -73,11 +73,13 @@ $textcolor: #969696;
     list-style-type: none;
     cursor: default;
     position: relative;
+    margin: 0 16px;
 
     span {
       display: block;
-      padding: 0 20px 0 20px;
+      width: 64px;
       color: $textcolor;
+      text-align: center;
       line-height: 43px;
 
       &:hover {

@@ -54,7 +54,7 @@ $textcolor: #dfe6e9;
   float: left;
   min-width: 200px;
   position: relative;
-  height: 100%;
+  height: calc(100vh - 46px);
 }
 
 .leftmenu {
@@ -75,11 +75,11 @@ $textcolor: #dfe6e9;
 
   & > li {
     width: 100%;
-    background: #202023;
+    padding: 5px 0;
     display: flex;
     align-items: center;
-    padding: 5px 0;
     box-sizing: content-box;
+    background: #202023;
     cursor: pointer;
 
     &:hover span,

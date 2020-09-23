@@ -9,6 +9,10 @@
         <span>网易云音乐</span>
       </div>
       <div class="search">
+        <ul class="before_after">
+          <li><i class="iconfont icon">&#xe619;</i></li>
+          <li><i class="iconfont icon">&#xe618;</i></li>
+        </ul>
         <el-input
           :value="content"
           @input="search"
@@ -49,6 +53,7 @@ export default {
     let input = document.querySelector(".el-input__inner");
     input.style.backgroundColor = "#2d3436";
     input.style.height = "20px";
+    input.style.width = "auto";
 
     let fn = (name, age) => {
       console.log(name + ":" + age);
@@ -130,6 +135,7 @@ export default {
   display: flex;
   justify-content: flex-end;
 }
+
 .iconfont {
   font-family: "iconfont" !important;
   font-size: 26px;
@@ -153,6 +159,7 @@ export default {
   display: flex;
   align-items: center;
   & .search {
+    display: flex;
     -webkit-app-region: no-drag;
   }
   & .search > input {
@@ -160,13 +167,43 @@ export default {
     background-color: #202023;
   }
   & div:nth-child(1) {
-    flex: 2;
-  }
-  & div:nth-child(2) {
     flex: 1;
   }
+  & div:nth-child(2) {
+    flex: 2;
+  }
 }
+
+>>> .search .el-input{
+  width: auto;
+} 
+
 .input__inner {
   background: #202023 !important;
+}
+
+.before_after {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+  margin-right: 10px;
+
+  & li {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    background-color: #2f3542;
+    border: 1px solid #585757;
+    list-style-type: none;
+    cursor: default;
+  }
+}
+.icon {
+  font-size: 14px;
+  color: #f1f2f6;
 }
 </style>
